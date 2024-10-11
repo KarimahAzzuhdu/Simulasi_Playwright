@@ -1,10 +1,13 @@
 import {test, expect} from '@playwright/test'
 
-test('Demo Web has a Login Page', async ({page}) => {
+test('Verify Login Page', async ({page}) => {
     await page.goto('https://www.saucedemo.com/')
     
-    //User can see login-container
+    //User can see login-container, username input field, password input field, and login button
     await expect(page.locator('[data-test="login-container"] div').filter({ hasText: 'Login' }).first()).toBeVisible();
+    await expect(page.locator('[data-test="username"]').first()).toBeVisible();
+    await expect(page.locator('[data-test="password"]').first()).toBeVisible();
+    await expect(page.locator('[data-test="login-button"]').first()).toBeVisible();
 })
 
 test('Verify login with valid credentials', async ({page}) => {
@@ -72,7 +75,7 @@ test('Verify error message for incorrect password', async ({page}) => {
 })
 
 test('Verify logout', async ({page}) => {
-    await page.goto('https://www.saucedemo.com/')
+    await page.goto('https://www.saucedemo.com/');
     
     // User Login
     await page.locator('[data-test="username"]').fill('standard_user');

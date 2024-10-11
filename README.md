@@ -73,7 +73,7 @@ Perancangan Test Scenario dilakukan berdasarkan Test Item, kemudian diturunkan m
 *Prerequisites condition*: User already registered
 | Test ID  | Test Case Description                     	| Expected Outcome                                  	|
 |----------|----------------------------------------------|-------------------------------------------------------|
-| TC-LOG-01 | Halaman Login memiliki seluruh attribut Login| Terdapat Judul Login, Field Input Username dan Password, dan Button Sign-In |
+| TC-LOG-01 | Verify Login Page | Login page has login attribute |
 | TC_LOG_02 | Verify login with valid credentials      	| User logs in successfully and navigates to the product page |
 | TC_LOG_03 | Verify error message for blank username fields   | Displays "Username is required" message           	|
 | TC_LOG_04 | Verify error message for blank password fields   | Displays "Password is required" message           	|
