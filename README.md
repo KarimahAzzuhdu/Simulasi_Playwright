@@ -1,6 +1,8 @@
 # **Simulasi QA - Automation Test**
 Tujuan utama dari proyek ini adalah melakukan simulasi pekerjaan Quality Assurance (QA) mulai dari perencanaan hingga pelaporan. Karena objek pengujian merupakan situs demo web publik dan dokumen seperti product requirement tidak tersedia, maka fokus simulasi pengujian hanya berdasarkan tipe-tipe pengujian umum seperti Fuctionality Testing, Data Validation Testing, dsb.
 
+campur2 b.inggris dan b.indo karena bingung translate. 
+
 ---
 
 ## **Automation Web UI Test Plan**
@@ -15,8 +17,8 @@ SIMUL-TEST-UI-01
 Komponen pengujian yang akan dilakukan meliputi:
 - Functionality Testing : Komponen antarmuka situs web, termasuk login, cart, dan halaman product
 - Data Validation Testing : Validasi data terhadap detail product
-- Compatibility Testing : Kompatibilitas situs web pada beragam browser dan perangkat
 - Error Handling Testing : Verifikasi penanganan error untuk fungsi login
+- Compatibility Testing : Kompatibilitas situs web pada beragam browser dan perangkat
 
 Komponen pengujian yang tidak akan dilakukan meliputi:
 - Security Testing
@@ -28,19 +30,18 @@ Tujuan dari *Test Plan*
 - Mendeteksi masalah fungsional atau antarmuka pada tahap awal pengembangan
 - Memastikan situs web bekerja dengan baik pada berbagai browser dan perangkat.
 
-#### **5. *Test Strategy***
-Metode pengujian ini terdiri dari :
+#### **5. *Test Items***
+Fitur pada situs web yang akan diuji :
+1. **Login** 
+2. **Product Listing and Details** 
+3. **Cart** 
+
+#### **6. *Test Strategy***
+Metode/Pendekatan pengujian ini secara garis besar sebagai berikut:
 - Automation Test menggunakan Playwright dan/atau Selenium
 - Bahasa yang digunakan adalah JavaScript dan/atau Python
-- Seluruh script disimpan di repository github, untuk kedepannya simulasi github action (integration to CI/CD pipelines)
-
-#### **6. *Test Items***
-Fitur pada situs web yang akan diuji :
-1. **Login Functionality:** Verifying login/logout flow with valid and invalid credentials.
-2. **Product Listing and Details:** Checking product details, pricing accuracy, and data consistency.
-3. **Cart Functionality:** Ensuring products are correctly added/removed from the cart and the cart count updates accordingly.
-4. **Error Handling:** Validating proper error messages for invalid login attempts.
-5. **Compatibility:** Testing website functionality on Chrome, Firefox, and Safari (desktop and mobile views).
+- Seluruh Test Script disimpan di repository github, untuk kedepannya simulasi github action (integration to CI/CD pipelines)
+- Seluruh Test Script dieksekusi pada beberapa browser dan perangkat untuk pengujian kompatibilitas.
 
 #### **7. Jadwal *Test Execution***
 | Activity           	| Start Date   | End Date 	|
@@ -51,39 +52,52 @@ Fitur pada situs web yang akan diuji :
 | Test Execution     	| Oct 11, 2024| Oct 14, 2024|
 | Test Report Generation | Oct 14, 2024| Oct 15, 2024|
 
-#### **8. *Test Environment***
-- **Browser:** Chrome dan Firefox
-- **Sistem Operasi:** Windows
-- **Perangkat:** Desktop
+#### **8. *Test Environment & Test Data***
+##### Test Environment :
+   - **Browser:** Chrome dan Firefox
+   - **Sistem Operasi:** Windows
+   - **Perangkat:** Desktop, Mobile Phone *to be decided later*
+##### Test Data :
+| Accepted usernames | Password |
+|--------------------|----------|
+| standard_user | secret_sauce|
+| locked_out_user | secret_sauce|
+| problem_user | secret_sauce|
+| performance_glitch_user | secret_sauce|
+| error_user | secret_sauce|
+| visual_user | secret_sauce|
 
-#### **9. *Test Cases***
-update nanti.. ini dari chatgpt
-##### Functionality Testing:
+#### **9. *Test Scenarios & Test Cases***
+Perancangan Test Scenario dilakukan berdasarkan Test Item, kemudian diturunkan menjadi beberapa Test Case yang dirancang berdasarkan cakupan pengujian (Test Scope)
+#### Test Scenario : Memverifikasi alur login/logout dengan kredensial yang valid dan tidak valid.
+*Prerequisites condition*: User already registered
 | Test ID  | Test Case Description                     	| Expected Outcome                                  	|
 |----------|----------------------------------------------|-------------------------------------------------------|
-| TC_F_01  | Verify login with valid credentials      	| User logs in successfully and navigates to the product page |
-| TC_F_02  | Verify login with invalid credentials    	| Appropriate error message displayed               	|
-| TC_F_03  | Verify adding product to cart            	| Product appears in cart and cart count updates    	|
-| TC_F_04  | Verify removing product from cart        	| Product removed from cart, and cart count updates 	|
+| TC-LOG-01 | Halaman Login memiliki seluruh attribut Login| Terdapat Judul Login, Field Input Username dan Password, dan Button Sign-In |
+| TC_LOG_02 | Verify login with valid credentials      	| User logs in successfully and navigates to the product page |
+| TC_LOG_03 | Verify error message for blank username fields   | Displays "Username is required" message           	|
+| TC_LOG_04 | Verify error message for blank password fields   | Displays "Password is required" message           	|
+| TC_LOG_05 | Verify error message for incorrect password   | Displays "Username and password do not match" message |
+| TC_LOG_06 | Verify logout   | redirect back to login page |
 
-##### Data Validation Testing:
+#### Test Scenario : Memeriksa detail produk, akurasi harga produk, dan konsistensi data produk.
+*Prerequisites condition*: User already log in, ...
 | Test ID  | Test Case Description                      	| Expected Outcome                                  	|
 |----------|-----------------------------------------------|-------------------------------------------------------|
-| TC_DV_01 | Verify product names match across pages   	| Product names are consistent on all pages         	|
-| TC_DV_02 | Verify product prices are accurate        	| Product prices match on the listing and detail page   |
+| TC_PROD_00 | Prerequisites Test | Halaman Inventory tidak dapat diakses |
+| TC_PROD_01 | Halaman Inventory memiliki seluruh atribut product  	| Product names are consistent on all pages         	|
+| TC_PROD_02 | Verify product names match across pages   	| Product names are consistent on all pages         	|
+| TC_PROD_03 | Verify product prices are accurate        	| Product prices match on the listing and detail page   |
+| TC_PROD_04 | Update Later      	|   |
 
-##### Error Handling Testing:
+#### Test Scenario : Memverifikasi alur pembelian produk seperti memastikan kesesuaian produk saat ditambahkan/dihapuskan dari Keranjang Belanja (Cart).
+*Prerequisites condition*: User already log in, ...
 | Test ID  | Test Case Description                      	| Expected Outcome                                  	|
 |----------|-----------------------------------------------|-------------------------------------------------------|
-| TC_EH_01 | Verify error message for blank login fields   | Displays "Username is required" message           	|
-| TC_EH_02 | Verify error message for incorrect password   | Displays "Username and password do not match" message |
-
-##### Compatibility Testing:
-| Test ID  | Test Case Description                      	| Expected Outcome                                  	|
-|----------|-----------------------------------------------|-------------------------------------------------------|
-| TC_C_01  | Verify login on Chrome                    	| Login functionality works as expected             	|
-| TC_C_02  | Verify login on Firefox                   	| Login functionality works as expected             	|
-| TC_C_03  | Verify responsive design on mobile emulation  | Elements resize and display properly              	|
+| TC_CART_00 | Prerequisites Test | Halaman Cart tidak dapat diakses |
+| TC_CART_01  | Verify adding product to cart            	| Product appears in cart and cart count updates    	|
+| TC_CART_02  | Verify removing product from cart        	| Product removed from cart, and cart count updates 	|
+| TC_CART_03  | Update Later        	| 	|
 
 #### **10. *Test Automation Tools***
 - **Framework:** Playwright dan/atau Selenium
@@ -92,32 +106,26 @@ update nanti.. ini dari chatgpt
 - **Test Report Generation:** ***To be decided later***
 
 #### **11. *Test Criteria***
-update nanti.. ini dari chatgpt
 - **Entry Criteria:**
-  - Test environment setup completed.
-  - Application deployed and stable for testing.
-  - Automation test cases developed and reviewed.
+  - Test Environment, Test Data, dan Test Automation Tools telah disiapkan.
+  - Aplikasi telah di-deploy dan dalam posisi *staged & stable*.
+  - Test Case telah dibuat dan direview.
 
 - **Exit Criteria:**
-  - All high-priority test cases executed.
-  - All critical bugs resolved or accepted for future release.
-  - Test report generated and reviewed by stakeholders.
+  - Seluruh Test Case prioritas tinggi telah dieksekusi.
+  - Test Report telah dibuat dan direview.
 
 #### **12. Roles and Responsibilities**
-ALL ME!!
-update nanti.. ini dari chatgpt
-- **Test Manager:** Oversees overall testing activities, reviews the final report.
-- **Automation Test Engineer:** Develops and executes automated test scripts.
-- **Developer:** Fixes any bugs found during testing.
-- **Product Owner:** Reviews and signs off the test results.
+*In this project, it's all My responsibilities!! but normally*:
+- **Test Manager:** Mengawasi seluruh aktivitas pengujian dan mereview laporan pengujian
+- **Automation Test Engineer:** Mengembangkan dan mengeksekusi test scripts
+- **Developer:** Memperbaiki seluruh defect/bug yang ditemukan saat pengujian
+- **Product Owner:** Mereview dan menandatangani Test Result
 
 #### **13. Manajemen Risiko**
-update nanti.. ini dari chatgpt
 | Risk                      	| Mitigation Strategy                      	|
 |-------------------------------|----------------------------------------------|
-| Frequent UI changes       	| Implement modular test scripts to adapt to UI updates |
-| Inconsistent environment setup| Use Docker containers for consistent testing environments |
-| Network issues on CI server   | Use stable network infrastructure with fallback mechanisms |
+| Perubahan pada antarmuka web secara berkala       	| Mengimplementasikan script test yang bersifat modular sehingga dapat beradaptasi akan perubahan antarmuka |
 
 #### **14. *Deliverables***
 - Sebelum Pengujian : Test Plan + Test Case (dalam README)
