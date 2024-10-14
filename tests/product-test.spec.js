@@ -7,16 +7,29 @@ import {test, expect} from '@playwright/test'
 //     await page.locator('[data-test="password"]').fill('secret_sauce');
 //     await page.locator('[data-test="login-button"]').click();
 // }
+test('Access inventory page without login', async ({page}) => {
+    // Prerequisites condition: User already log in (sementara copas aja)
+    await page.goto('https://www.saucedemo.com/inventory.html')
 
-test('', async ({page}) => {
+    // redirect to login page
+    await page.waitForURL('https://www.saucedemo.com/')
+    // Display "You can only access '/inventory.html' when you are logged in." message
+    await expect(page.locator('[data-test="error"]')).toContainText("You can only access '/inventory.html' when you are logged in");
+})
+
+test('Test Github Action - ini harus error', async ({page}) => {
     // Prerequisites condition: User already log in (sementara copas aja)
     await page.goto('https://www.saucedemo.com/');
-    await page.locator('[data-test="username"]').fill('standard_user');
+    //problem_user
+    await page.locator('[data-test="username"]').fill('problem_user');
     await page.locator('[data-test="password"]').fill('secret_sauce');
     await page.locator('[data-test="login-button"]').click();
 
-    await page.goto('https://www.saucedemo.com/inventory.html')
+    await page.waitForURL('https://www.saucedemo.com/inventory.html')
 
+    //expect error buat test github action
+    await expect(page.locator('[data-test="inventory-list"]')).toBeVisible();
+    await expect.soft(page.locator('#item_4_img_link > img:nth-child(1)')).not.toBeVisible()
 })
 
 /** hasil codegen
