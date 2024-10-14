@@ -31,6 +31,22 @@ test('Verify Inventory Page and Inventory Item Page', async ({page}) => {
     await expect(page.locator('[data-test="back-to-products"]')).toBeVisible()
 })
 
+test('Verify product detail match across pages', async ({page}) => {
+    // Prerequisites condition: User already log in (sementara copas aja)
+    await page.goto('https://www.saucedemo.com/');
+    await page.locator('[data-test="username"]').fill('standard_user');
+    await page.locator('[data-test="password"]').fill('secret_sauce');
+    await page.locator('[data-test="login-button"]').click();
+
+    await page.waitForURL('https://www.saucedemo.com/inventory.html')
+
+    //loop 6 item produk
+    // id atribut format item-[no item]-[atribut]
+    // contoh img-link item-4-img-link
+
+    
+})
+
 test('Verify error message for access inventory page without login', async ({page}) => {
     await page.goto('https://www.saucedemo.com/inventory.html')
 
@@ -46,7 +62,7 @@ test('Verify error message for access inventory-item page without login', async 
     // redirect to login page
     await page.waitForURL('https://www.saucedemo.com/')
     // Display "You can only access '/inventory.html' when you are logged in." message
-    await expect(page.locator('[data-test="error"]')).toContainText("You can only access 'inventory-item.html' when you are logged in");
+    await expect(page.locator('[data-test="error"]')).toContainText("You can only access '/inventory-item.html' when you are logged in");
 })
 
 /** hasil codegen
