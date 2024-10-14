@@ -18,5 +18,8 @@ test('', async ({page}) => {
     await page.goto('https://www.saucedemo.com/inventory.html')
 
     await page.goto('https://www.saucedemo.com/cart.html')
+    // https://www.saucedemo.com/checkout-step-one.html
+    // https://www.saucedemo.com/checkout-step-two.html
+    // https://www.saucedemo.com/checkout-complete.html
 
 })

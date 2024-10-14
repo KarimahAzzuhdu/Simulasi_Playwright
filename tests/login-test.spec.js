@@ -10,7 +10,7 @@ test('Verify Login Page', async ({page}) => {
     await expect(page.locator('[data-test="login-button"]').first()).toBeVisible();
 })
 
-test('Verify login with valid credentials', async ({page}) => {
+test('Verify login process with valid credentials', async ({page}) => {
     await page.goto('https://www.saucedemo.com/')
     
     // User click & fill username field with valid username
@@ -29,7 +29,7 @@ test('Verify login with valid credentials', async ({page}) => {
     await expect(page.locator('[data-test="logout-sidebar-link"]')).toBeVisible();
 })
 
-test('Verify error message for blank username fields', async ({page}) => {
+test('Verify error message for blank username field', async ({page}) => {
     await page.goto('https://www.saucedemo.com/');
 
     // User click login button without fill username field
@@ -40,7 +40,7 @@ test('Verify error message for blank username fields', async ({page}) => {
     await page.locator('[data-test="error-button"]').click();
 })
 
-test('Verify error message for blank password fields', async ({page}) => {
+test('Verify error message for blank password field', async ({page}) => {
     await page.goto('https://www.saucedemo.com/');
 
     // User click & fill username field with valid username
@@ -74,7 +74,7 @@ test('Verify error message for incorrect password', async ({page}) => {
     await page.locator('[data-test="error-button"]').click();
 })
 
-test('Verify logout', async ({page}) => {
+test('Verify logout process', async ({page}) => {
     await page.goto('https://www.saucedemo.com/');
     
     // User Login
