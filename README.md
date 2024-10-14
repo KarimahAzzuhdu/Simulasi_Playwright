@@ -35,6 +35,7 @@ Fitur pada situs web yang akan diuji :
 1. **Login** 
 2. **Product Listing and Details** 
 3. **Cart** 
+4. **Checkout**
 
 #### **6. *Test Strategy***
 Metode/Pendekatan pengujian ini secara garis besar sebagai berikut:
@@ -48,15 +49,15 @@ Metode/Pendekatan pengujian ini secara garis besar sebagai berikut:
 |------------------------|--------------|--------------|
 | Test Plan Creation 	| Oct 10, 2024| Oct 11, 2024|
 | Test Case Development  | Oct 10, 2024| Oct 11, 2024|
-| Test Script Automation | Oct 11, 2024| Oct 14, 2024|
-| Test Execution     	| Oct 11, 2024| Oct 14, 2024|
-| Test Report Generation | Oct 14, 2024| Oct 15, 2024|
+| Test Script Automation | Oct 11, 2024| Oct 16, 2024|
+| Test Execution     	| Oct 11, 2024| Oct 16, 2024|
+| Test Report Generation | Oct 16, 2024| Oct 17, 2024|
 
 #### **8. *Test Environment & Test Data***
 ##### Test Environment :
    - **Browser:** Chrome dan Firefox
-   - **Sistem Operasi:** Windows
-   - **Perangkat:** Desktop, Mobile Phone *to be decided later*
+   - **Sistem Operasi:** Windows, Android, IOS
+   - **Perangkat:** Browser Desktop (Chromium, Firefox, webkit), Browser Mobile (Chrome, Safari)
 ##### Test Data :
 | Accepted usernames | Password |
 |--------------------|----------|
@@ -69,43 +70,53 @@ Metode/Pendekatan pengujian ini secara garis besar sebagai berikut:
 
 #### **9. *Test Scenarios & Test Cases***
 Perancangan Test Scenario dilakukan berdasarkan Test Item, kemudian diturunkan menjadi beberapa Test Case yang dirancang berdasarkan cakupan pengujian (Test Scope)
-#### Test Scenario : Memverifikasi alur login/logout dengan kredensial yang valid dan tidak valid.
+#### Test Scenario : Memverifikasi alur login/logout dengan kredensial yang valid dan tidak valid di halaman Login.
 *Prerequisites condition*: User already registered
 | Test ID  | Test Case Description                     	| Expected Outcome                                  	|
 |----------|----------------------------------------------|-------------------------------------------------------|
 | TC-LOG-01 | Verify Login Page | Login page has login attribute |
-| TC_LOG_02 | Verify login with valid credentials      	| User logs in successfully and navigates to the product page |
-| TC_LOG_03 | Verify error message for blank username fields   | Displays "Username is required" message           	|
-| TC_LOG_04 | Verify error message for blank password fields   | Displays "Password is required" message           	|
+| TC_LOG_02 | Verify login process with valid credentials      	| User logs in successfully and navigates to the product page |
+| TC_LOG_03 | Verify error message for blank username field   | Displays "Username is required" message           	|
+| TC_LOG_04 | Verify error message for blank password field   | Displays "Password is required" message           	|
 | TC_LOG_05 | Verify error message for incorrect password   | Displays "Username and password do not match" message |
-| TC_LOG_06 | Verify logout   | User logs out successfully and redirect back to login page |
+| TC_LOG_06 | Verify logout process   | User logs out successfully and redirect back to login page |
 
-#### Test Scenario : Memeriksa detail produk, akurasi harga produk, dan konsistensi data produk.
+#### Test Scenario : Memeriksa detail produk, akurasi harga produk, dan konsistensi data produk di produk listing dan produk detail.
 *Prerequisites condition*: User already log in, ...
 | Test ID  | Test Case Description                      	| Expected Outcome                                  	|
 |----------|-----------------------------------------------|-------------------------------------------------------|
-| TC_PROD_00 | Prerequisites Test | Halaman Inventory tidak dapat diakses |
 | TC_PROD_01 | Verify Inventory Page and Inventory Item Page 	|  User can see product listing and product detail        	|
 | TC_PROD_02 | Verify product names match across pages   	|  Product names match on the listing and detail page         	|
-| TC_PROD_03 | Verify product prices are accurate        	| Product prices match on the listing and detail page   |
+| TC_PROD_03 | Verify product prices match across pages        	| Product prices match on the listing and detail page   |
 | TC_PROD_04 | Verify product image match across pages   	|  Product image match on the listing and detail page         	|
 | TC_PROD_05 | Verify product description match across pages   	|  Product description match on the listing and detail page         	|
 | TC_PROD_06 | Verify sort product function by names and prices  	| Product listing can get sorted by names and prices         	|
+| TC_PROD_07 | Verify error message for access inventory page without login	| Redirect to Login Page and displays error message 	|
+| TC_PROD_08 | Verify error message for access inventory-item page without login	| Redirect to Login Page and displays error message  |
 
-#### Test Scenario : Memverifikasi alur pembelian produk seperti memastikan kesesuaian produk saat ditambahkan/dihapuskan dari Keranjang Belanja (Cart).
+#### Test Scenario : Memverifikasi detail produk, akurasi harga produk, dan konsistensi data produk saat ditambahkan/dihapuskan dari Keranjang Belanja (Cart).
 *Prerequisites condition*: User already log in, ...
 | Test ID  | Test Case Description                      	| Expected Outcome                                  	|
 |----------|-----------------------------------------------|-------------------------------------------------------|
-| TC_CART_00 | Prerequisites Test | Halaman Cart tidak dapat diakses |
-| TC_CART_01  | Verify adding product to cart            	| Product appears in cart and cart count updates    	|
-| TC_CART_02  | Verify removing product from cart        	| Product removed from cart, and cart count updates 	|
-| TC_CART_03  | Update Later        	| 	|
+| TC_CART_01  | Verify Cart Page | User can see cart page attributes  |
+| TC_CART_02  | Verify adding product to cart and product information are accurate 	| Product appears in cart, cart count updates, and product information are accurate    	|
+| TC_CART_03  | Verify removing product from cart        	| Product removed from cart, and cart count updates 	|
+| TC_CART_04  | Verify error message for cart page without login        	| Redirect to Login Page and displays error message 	|
+
+#### Test Scenario : Memverifikasi proses checkout produk.
+*Prerequisites condition*: User already log in
+| Test ID  | Test Case Description                      	| Expected Outcome                                  	|
+|----------|-----------------------------------------------|-------------------------------------------------------|
+| TC_CO_  |  Update later           	|     	|
+| TC_CO_  |             	|     	|
+| TC_CO_  |             	|     	|
 
 #### **10. *Test Automation Tools***
-- **Framework:** Playwright dan/atau Selenium
-- **Languages:** JavaScript (Node.js) atau Python (PyTest)
+- **Framework:** Playwright
+- **Languages:** JavaScript (Node.js)
 - **Continuous Integration (CI) Tool:** GitHub Actions
 - **Test Report Generation:** ***To be decided later***
+catatan : Simulasi dengan tools lain disimpan direpo terpisah
 
 #### **11. *Test Criteria***
 - **Entry Criteria:**
