@@ -78,17 +78,19 @@ Perancangan Test Scenario dilakukan berdasarkan Test Item, kemudian diturunkan m
 | TC_LOG_03 | Verify error message for blank username fields   | Displays "Username is required" message           	|
 | TC_LOG_04 | Verify error message for blank password fields   | Displays "Password is required" message           	|
 | TC_LOG_05 | Verify error message for incorrect password   | Displays "Username and password do not match" message |
-| TC_LOG_06 | Verify logout   | redirect back to login page |
+| TC_LOG_06 | Verify logout   | User logs out successfully and redirect back to login page |
 
 #### Test Scenario : Memeriksa detail produk, akurasi harga produk, dan konsistensi data produk.
 *Prerequisites condition*: User already log in, ...
 | Test ID  | Test Case Description                      	| Expected Outcome                                  	|
 |----------|-----------------------------------------------|-------------------------------------------------------|
 | TC_PROD_00 | Prerequisites Test | Halaman Inventory tidak dapat diakses |
-| TC_PROD_01 | Halaman Inventory memiliki seluruh atribut product  	| Product names are consistent on all pages         	|
-| TC_PROD_02 | Verify product names match across pages   	| Product names are consistent on all pages         	|
+| TC_PROD_01 | Verify Inventory Page and Inventory Item Page 	|  User can see product listing and product detail        	|
+| TC_PROD_02 | Verify product names match across pages   	|  Product names match on the listing and detail page         	|
 | TC_PROD_03 | Verify product prices are accurate        	| Product prices match on the listing and detail page   |
-| TC_PROD_04 | Update Later      	|   |
+| TC_PROD_04 | Verify product image match across pages   	|  Product image match on the listing and detail page         	|
+| TC_PROD_05 | Verify product description match across pages   	|  Product description match on the listing and detail page         	|
+| TC_PROD_06 | Verify sort product function by names and prices  	| Product listing can get sorted by names and prices         	|
 
 #### Test Scenario : Memverifikasi alur pembelian produk seperti memastikan kesesuaian produk saat ditambahkan/dihapuskan dari Keranjang Belanja (Cart).
 *Prerequisites condition*: User already log in, ...
