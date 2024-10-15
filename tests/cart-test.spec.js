@@ -17,7 +17,7 @@ test('Verify Cart Page', async ({page}) => {
 
     await page.locator('[data-test="shopping-cart-link"]').click();
     await expect(page.locator('[data-test="title"]')).toContainText('Your Cart');
-    await expect.soft(page.locator('.cart_quantity_label')).toContainText('QYT');
+    await expect.soft(page.locator('.cart_quantity_label')).toContainText('QTY');
     await expect.soft(page.locator('.cart_desc_label')).toContainText('Description');
     await expect.soft(page.locator('#continue-shopping')).toContainText('Continue Shopping');
     await expect.soft(page.locator('#checkout')).toContainText('Checkout');
