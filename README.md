@@ -86,13 +86,10 @@ Perancangan Test Scenario dilakukan berdasarkan Test Item, kemudian diturunkan m
 | Test ID  | Test Case Description                      	| Expected Outcome                                  	|
 |----------|-----------------------------------------------|-------------------------------------------------------|
 | TC_PROD_01 | Verify Inventory Page and Inventory Item Page 	|  User can see product listing and product detail        	|
-| TC_PROD_02 | Verify product names match across pages   	|  Product names match on the listing and detail page         	|
-| TC_PROD_03 | Verify product prices match across pages        	| Product prices match on the listing and detail page   |
-| TC_PROD_04 | Verify product image match across pages   	|  Product image match on the listing and detail page         	|
-| TC_PROD_05 | Verify product description match across pages   	|  Product description match on the listing and detail page         	|
-| TC_PROD_06 | Verify sort product function by names and prices  	| Product listing can get sorted by names and prices         	|
-| TC_PROD_07 | Verify error message for access inventory page without login	| Redirect to Login Page and displays error message 	|
-| TC_PROD_08 | Verify error message for access inventory-item page without login	| Redirect to Login Page and displays error message  |
+| TC_PROD_02 | Verify product information (name, description, price, image) match across pages   	|  Product information match on the listing and detail page         	|
+| TC_PROD_03 | Verify sort product function by names and prices  	| Product listing can get sorted by names and prices         	|
+| TC_PROD_04 | Verify error message for access inventory page without login	| Redirect to Login Page and displays error message 	|
+| TC_PROD_05 | Verify error message for access inventory-item page without login	| Redirect to Login Page and displays error message  |
 
 #### Test Scenario : Memverifikasi detail produk, akurasi harga produk, dan konsistensi data produk saat ditambahkan/dihapuskan dari Keranjang Belanja (Cart).
 *Prerequisites condition*: User already log in, ...
