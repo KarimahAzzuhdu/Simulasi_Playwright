@@ -25,38 +25,63 @@ test.describe("Test suite - Functionality Test", () => {
         await expect(page.locator('[data-test="back-to-products"]')).toBeVisible()
     })
 
-    test.skip('Verify product information match across pages', async ({page}) => {
+    test('Verify product information match across pages',{tag: '@akubingung'}, async ({page}) => {
         await page.waitForURL('https://www.saucedemo.com/inventory.html')
-    
-        await page.pause()
-    
-        // first product on the listing
-        const first_product = await page.locator('#inventory-item').first()
-    
-        // product listing information
-        // const listing_img_src = 
-        // const listing_name = 
-        // const listing_desc = 
-        // const listing_price = 
-    
+
+        /**
+         * PRODUCT LISTING PAGE
+         */
+        //first product on listing
+        let first_prod = await page.locator('.inventory_item').first()
+        //NAME
+        let listing_name = await first_prod.locator('.inventory_item_name').textContent()
+        // let listing_name = await page.locator('#item_'+ product_id +'_title_link').textContent()
+        // console.log('name listing : '+listing_name)
+        //DESC
+        let listing_desc = await first_prod.locator('.inventory_item_desc').textContent()
+        // let listing_desc = await page.locator('.inventory_item_desc').first().textContent()
+        // console.log('desc listing : '+listing_desc)
+        //PRICE
+        let listing_price = await first_prod.locator('.inventory_item_price').textContent()
+        // let listing_price = await page.locator('.inventory_item_price').first().textContent()
+        // console.log('price listing : '+listing_price)
+
+        //IMAGE
+        // let listing_img_src = await page.locator('.inventory_item_img').first()
+        // console.log('img listing :'+listing_img_src)
+
+        /**
+         * PRODUCT DETAIL PAGE
+         */
         // goto detail product
-        await page.locator('//*[@id="item_4_title_link"]/div').click();
+        // await page.locator('[data-test="item-'+ product_id +'-title-link"]').click();
+        await first_prod.getByRole("img").click()
+        // await first_prod.locator('.inventory_item_label > .inventory_item_name').click()
         await page.waitForSelector('#inventory_item_container')
     
-        // product detail information
-        // const detail_img_src = 
-        // const detail_name = 
-        // const detail_desc = 
-        // const detail_price = 
-        
-        //assertion
+        //NAME
+        let detail_name = await page.locator('[data-test="inventory-item-name"]').textContent()
+        // console.log('name detail : '+detail_name)
+        //DESC
+        let detail_desc = await page.locator('.inventory_details_desc').textContent()
+        // console.log('desc detail : '+detail_desc)
+        //PRICE
+        let detail_price = await page.locator('.inventory_details_price').textContent()
+        // console.log('price detail : '+detail_price)
+        //IMAGE
+        // let detail_img_src = await page.locator('.inventory_details_img').screenshot()
+        // console.log('img listing : '+detail_img_src)
+
+        /**
+         * Check product information match across pages
+         */
+        await expect.soft(detail_name).toBe(listing_name)
+        await expect.soft(detail_desc).toBe(listing_desc)
+        await expect.soft(detail_price).toBe(listing_price)
         // await expect(detail_img_src).toBe(listing_img_src)
-        // await expect.soft(detail_name).toBe(listing_name)
-        // await expect.soft(detail_desc).toBe(listing_desc)
-        // await expect.soft(detail_price).toBe(listing_price)
     })
 
-    test.skip('Verify sort product function by names and prices', async ({page}) => {
+    test.skip('Verify sort product function by names and prices',{tag: '@akubingung'},  async ({page}) => {
         await page.waitForURL('https://www.saucedemo.com/inventory.html')
     
         // await page.getByText('Name (A to Z)Name (A to Z)').click();
