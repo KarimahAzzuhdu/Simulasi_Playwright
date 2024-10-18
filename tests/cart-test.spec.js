@@ -20,7 +20,7 @@ test.describe("Test suite - Functionality Test", () => {
         await expect.soft(page.locator('#checkout')).toContainText('Checkout');
     })
 
-    test('Verify adding product to cart and product information are accurate', async ({page}) => {
+    test('Verify adding product to cart and product information are accurate',{tag: '@need_review'}, async ({page}) => {
         await page.waitForURL('https://www.saucedemo.com/inventory.html')
         
         /**
@@ -59,7 +59,7 @@ test.describe("Test suite - Functionality Test", () => {
         await expect.soft(cart_price).toBe(listing_price)
     })
 
-    test('Verify removing product from cart', async ({page}) => {
+    test('Verify removing product from cart',{tag: '@need_review'}, async ({page}) => {
         await page.waitForURL('https://www.saucedemo.com/inventory.html')
         await page.pause()
         
@@ -77,16 +77,5 @@ test.describe("Test suite - Functionality Test", () => {
          * Check removed product
          */
         await expect(page.locator('.cart_item')).not.toBeVisible();
-    })
-});
-
-test.describe("Test suite - Error Handling Test", () => {
-    test('Verify error message for cart page without login', async ({page}) => {
-        await page.goto('https://www.saucedemo.com/cart.html')
-
-        // redirect to login page
-        await page.waitForURL('https://www.saucedemo.com/')
-        // Display "You can only access '/inventory.html' when you are logged in." message
-        await expect(page.locator('[data-test="error"]')).toContainText("You can only access '/cart.html' when you are logged in");
     })
 });

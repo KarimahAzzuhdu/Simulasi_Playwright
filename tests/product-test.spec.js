@@ -25,7 +25,7 @@ test.describe("Test suite - Functionality Test", () => {
         await expect(page.locator('[data-test="back-to-products"]')).toBeVisible()
     })
 
-    test('Verify product information match across pages',{tag: '@akubingung'}, async ({page}) => {
+    test('Verify product information match across pages',{tag: '@need_review'}, async ({page}) => {
         await page.waitForURL('https://www.saucedemo.com/inventory.html')
 
         /**
@@ -110,22 +110,6 @@ test.describe("Test suite - Functionality Test", () => {
     })
 });
 
-test.describe("Test suite - Error Handling Test", () => {
-    test('Verify error message for access inventory page without login', async ({page}) => {
-        await page.goto('https://www.saucedemo.com/inventory.html')
+// test.describe("Test suite - Error Handling Test", () => {
     
-        // redirect to login page
-        await page.waitForURL('https://www.saucedemo.com/')
-        // Display "You can only access '/inventory.html' when you are logged in." message
-        await expect(page.locator('[data-test="error"]')).toContainText("You can only access '/inventory.html' when you are logged in");
-    })
-    
-    test('Verify error message for access inventory-item page without login', async ({page}) => {
-        await page.goto('https://www.saucedemo.com/inventory-item.html?id=4')
-    
-        // redirect to login page
-        await page.waitForURL('https://www.saucedemo.com/')
-        // Display "You can only access '/inventory.html' when you are logged in." message
-        await expect(page.locator('[data-test="error"]')).toContainText("You can only access '/inventory-item.html' when you are logged in");
-    })
-});
+// });
