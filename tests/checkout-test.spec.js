@@ -79,11 +79,6 @@ test.describe("Test suite - Data Validation Test", () =>{
         //NAME & Price Last Item
         let cart_name_last = await last_cart.locator('.inventory_item_name').textContent()
         let cart_price_last = await last_cart.locator('.inventory_item_price').textContent()
-                
-        // console.log('cart name first : '+cart_name_first)
-        // console.log('cart price first : '+cart_price_first)
-        // console.log('cart name last : '+cart_name_last)
-        // console.log('cart price last : '+cart_price_last)
         
         //go to checkout page
         await page.locator('[data-test="checkout"]').click();
@@ -105,22 +100,11 @@ test.describe("Test suite - Data Validation Test", () =>{
         //NAME & Price Last Item
         let checkout_name_last = await last_prod.locator('.inventory_item_name').textContent()
         let checkout_price_last = await last_prod.locator('.inventory_item_price').textContent()
-
-        // console.log('name first : '+checkout_name_first)
-        // console.log('price first : '+checkout_price_first)
-        // console.log('name last : '+checkout_name_last)
-        // console.log('price last : '+checkout_price_last)
-
         //Summary
-        // let summary_subtotal = await page.locator('.summary_subtotal_label').textContent()
-        // let summary_tax = await page.locator('.summary_tax_label').textContent()
-        // let summary_total = await page.locator('.summary_total_label').textContent()
+        let summary_subtotal = Number.parseFloat((await page.locator('.summary_subtotal_label').textContent()).slice(13))
+        let summary_tax = Number.parseFloat((await page.locator('.summary_tax_label').textContent()).slice(6))
+        let summary_total = Number.parseFloat((await page.locator('.summary_total_label').textContent()).slice(8))
 
-        // console.log(summary_subtotal)
-        // console.log(summary_tax)
-        // console.log(summary_total)
-
-        await page.pause()
         /**
          * Check product information match across pages
          */
@@ -128,6 +112,18 @@ test.describe("Test suite - Data Validation Test", () =>{
         await expect.soft(cart_price_first).toBe(checkout_price_first)
         await expect.soft(cart_name_last).toBe(checkout_name_last)
         await expect.soft(cart_price_last).toBe(checkout_price_last)
+
+        /**
+         * Check checkout overwiew information
+         */
+        let harga1 = Number.parseFloat(checkout_price_first.slice(1))
+        let harga2 = Number.parseFloat(checkout_price_last.slice(1))
+        let hitung_subtotal = harga1 + harga2
+        let hitung_total = summary_tax + hitung_subtotal
+
+        await expect.soft(hitung_subtotal).toBe(summary_subtotal)
+        await expect.soft(hitung_total).toBe(summary_total)
+        
     })
 })
 

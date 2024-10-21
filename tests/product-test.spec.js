@@ -73,42 +73,30 @@ test.describe("Test suite - Data Validation Test", () => {
         let first_prod = await page.locator('.inventory_item').first()
         //NAME
         let listing_name = await first_prod.locator('.inventory_item_name').textContent()
-        // let listing_name = await page.locator('#item_'+ product_id +'_title_link').textContent()
-        // console.log('name listing : '+listing_name)
         //DESC
         let listing_desc = await first_prod.locator('.inventory_item_desc').textContent()
-        // let listing_desc = await page.locator('.inventory_item_desc').first().textContent()
-        // console.log('desc listing : '+listing_desc)
         //PRICE
         let listing_price = await first_prod.locator('.inventory_item_price').textContent()
-        // let listing_price = await page.locator('.inventory_item_price').first().textContent()
-        // console.log('price listing : '+listing_price)
-
         //IMAGE
-        // let listing_img_src = await page.locator('.inventory_item_img').first()
-        // console.log('img listing :'+listing_img_src)
+        let listing_img_src = await page.locator('#item_4_img_link > img:nth-child(1)').getAttribute('src')
 
-        /**
-         * PRODUCT DETAIL PAGE
-         */
         // goto detail product
         // await page.locator('[data-test="item-'+ product_id +'-title-link"]').click();
         await first_prod.getByRole("img").click()
         // await first_prod.locator('.inventory_item_label > .inventory_item_name').click()
         await page.waitForSelector('#inventory_item_container')
     
+        /**
+         * PRODUCT DETAIL PAGE
+         */
         //NAME
         let detail_name = await page.locator('[data-test="inventory-item-name"]').textContent()
-        // console.log('name detail : '+detail_name)
         //DESC
         let detail_desc = await page.locator('.inventory_details_desc').textContent()
-        // console.log('desc detail : '+detail_desc)
         //PRICE
         let detail_price = await page.locator('.inventory_details_price').textContent()
-        // console.log('price detail : '+detail_price)
         //IMAGE
-        // let detail_img_src = await page.locator('.inventory_details_img').screenshot()
-        // console.log('img listing : '+detail_img_src)
+        let detail_img_src = await page.locator('.inventory_details_img').getAttribute('src')
 
         /**
          * Check product information match across pages
@@ -116,6 +104,6 @@ test.describe("Test suite - Data Validation Test", () => {
         await expect.soft(detail_name).toBe(listing_name)
         await expect.soft(detail_desc).toBe(listing_desc)
         await expect.soft(detail_price).toBe(listing_price)
-        // await expect(detail_img_src).toBe(listing_img_src)
+        await expect.soft(detail_img_src).toBe(listing_img_src)
     })
 });
