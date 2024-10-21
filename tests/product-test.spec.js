@@ -25,6 +25,43 @@ test.describe("Test suite - Functionality Test", () => {
         await expect(page.locator('[data-test="back-to-products"]')).toBeVisible()
     })
 
+    test.skip('Verify sort product function by names and prices',{tag: '@akubingung'},  async ({page}) => {
+        await page.waitForURL('https://www.saucedemo.com/inventory.html')
+    
+        // await page.getByText('Name (A to Z)Name (A to Z)').click();
+        // await page.locator('[data-test="product-sort-container"]').selectOption('za');
+        // await expect(page.locator('[data-test="inventory-container"]')).toBeVisible();
+        // await page.getByText('Name (Z to A)Name (A to Z)').click();
+        // await page.getByText('Name (Z to A)Name (A to Z)').click();
+        // await expect(page.locator('[data-test="inventory-container"]')).toBeVisible();
+        // await expect(page.locator('[data-test="inventory-list"]')).toBeVisible();
+        // await page.getByText('Name (Z to A)Name (A to Z)').click();
+        // await page.locator('[data-test="product-sort-container"]').selectOption('lohi');
+        // await expect(page.locator('[data-test="inventory-list"]')).toBeVisible();
+        // await page.getByText('Price (low to high)Name (A to').click();
+        // await page.locator('[data-test="product-sort-container"]').selectOption('hilo');
+        // await expect(page.locator('[data-test="inventory-list"]')).toBeVisible();
+        // await expect(page.locator('[data-test="inventory-list"]')).toContainText('$49.99');
+        // await page.locator('[data-test="product-sort-container"]').selectOption('lohi');
+        // await expect(page.locator('[data-test="inventory-list"]')).toContainText('$7.99');
+        // await page.locator('[data-test="product-sort-container"]').selectOption('za');
+        // await expect(page.locator('[data-test="item-3-title-link"] [data-test="inventory-item-name"]')).toContainText('Test.allTheThings() T-Shirt (Red)');
+        // await page.getByText('Name (Z to A)Name (A to Z)').click();
+        // await page.locator('[data-test="product-sort-container"]').selectOption('az');
+        // await expect(page.locator('[data-test="item-4-title-link"] [data-test="inventory-item-name"]')).toContainText('Sauce Labs Backpack');
+        // await expect(page.locator('[data-test="item-4-img-link"]')).toBeVisible();
+    
+    })
+});
+
+test.describe("Test suite - Data Validation Test", () => {
+    test.beforeEach(async ({ page }) => {
+        await page.goto('https://www.saucedemo.com/');
+        await page.locator('[data-test="username"]').fill('standard_user');
+        await page.locator('[data-test="password"]').fill('secret_sauce');
+        await page.locator('[data-test="login-button"]').click();
+    });
+
     test('Verify product information match across pages',{tag: '@need_review'}, async ({page}) => {
         await page.waitForURL('https://www.saucedemo.com/inventory.html')
 
@@ -80,36 +117,4 @@ test.describe("Test suite - Functionality Test", () => {
         await expect.soft(detail_price).toBe(listing_price)
         // await expect(detail_img_src).toBe(listing_img_src)
     })
-
-    test.skip('Verify sort product function by names and prices',{tag: '@akubingung'},  async ({page}) => {
-        await page.waitForURL('https://www.saucedemo.com/inventory.html')
-    
-        // await page.getByText('Name (A to Z)Name (A to Z)').click();
-        // await page.locator('[data-test="product-sort-container"]').selectOption('za');
-        // await expect(page.locator('[data-test="inventory-container"]')).toBeVisible();
-        // await page.getByText('Name (Z to A)Name (A to Z)').click();
-        // await page.getByText('Name (Z to A)Name (A to Z)').click();
-        // await expect(page.locator('[data-test="inventory-container"]')).toBeVisible();
-        // await expect(page.locator('[data-test="inventory-list"]')).toBeVisible();
-        // await page.getByText('Name (Z to A)Name (A to Z)').click();
-        // await page.locator('[data-test="product-sort-container"]').selectOption('lohi');
-        // await expect(page.locator('[data-test="inventory-list"]')).toBeVisible();
-        // await page.getByText('Price (low to high)Name (A to').click();
-        // await page.locator('[data-test="product-sort-container"]').selectOption('hilo');
-        // await expect(page.locator('[data-test="inventory-list"]')).toBeVisible();
-        // await expect(page.locator('[data-test="inventory-list"]')).toContainText('$49.99');
-        // await page.locator('[data-test="product-sort-container"]').selectOption('lohi');
-        // await expect(page.locator('[data-test="inventory-list"]')).toContainText('$7.99');
-        // await page.locator('[data-test="product-sort-container"]').selectOption('za');
-        // await expect(page.locator('[data-test="item-3-title-link"] [data-test="inventory-item-name"]')).toContainText('Test.allTheThings() T-Shirt (Red)');
-        // await page.getByText('Name (Z to A)Name (A to Z)').click();
-        // await page.locator('[data-test="product-sort-container"]').selectOption('az');
-        // await expect(page.locator('[data-test="item-4-title-link"] [data-test="inventory-item-name"]')).toContainText('Sauce Labs Backpack');
-        // await expect(page.locator('[data-test="item-4-img-link"]')).toBeVisible();
-    
-    })
 });
-
-// test.describe("Test suite - Error Handling Test", () => {
-    
-// });
