@@ -2,6 +2,7 @@ import {test, expect} from '@playwright/test'
 
 test.describe("Test suite - Functionality Test", () => {
     test.beforeEach(async ({ page }) => {
+        // go to web demo and login with valid credentials
         await page.goto('https://www.saucedemo.com/');
         await page.locator('[data-test="username"]').fill('standard_user');
         await page.locator('[data-test="password"]').fill('secret_sauce');
@@ -12,7 +13,7 @@ test.describe("Test suite - Functionality Test", () => {
         //go to cart page
         await page.locator('[data-test="shopping-cart-link"]').click();
 
-        //assertion
+        //User can see Cart's attributes
         await expect(page.locator('[data-test="title"]')).toContainText('Your Cart');
         await expect.soft(page.locator('.cart_quantity_label')).toContainText('QTY');
         await expect.soft(page.locator('.cart_desc_label')).toContainText('Description');

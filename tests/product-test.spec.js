@@ -2,6 +2,7 @@ import {test, expect} from '@playwright/test'
 
 test.describe("Test suite - Functionality Test", () => {
     test.beforeEach(async ({ page }) => {
+        // go to web demo and login with valid credentials
         await page.goto('https://www.saucedemo.com/');
         await page.locator('[data-test="username"]').fill('standard_user');
         await page.locator('[data-test="password"]').fill('secret_sauce');
@@ -11,7 +12,7 @@ test.describe("Test suite - Functionality Test", () => {
     test('Verify Inventory Page and Inventory Item Page', async ({page}) => {
         await page.waitForURL('https://www.saucedemo.com/inventory.html')
     
-        /** product listing */
+        // User can see Product listing's attributes
         await expect(page.locator('.inventory_container')).toBeVisible();
         await expect.soft(page.locator('[data-test="title"]')).toContainText('Products');
         await expect.soft(page.locator('[data-test="item-4-title-link"] [data-test="inventory-item-name"]')).toContainText('Sauce Labs Backpack');
@@ -19,7 +20,7 @@ test.describe("Test suite - Functionality Test", () => {
         await expect.soft(page.locator('[data-test="add-to-cart-sauce-labs-backpack"]')).toContainText('Add to cart');
         await expect.soft(page.locator('[data-test="inventory-list"]')).toContainText('carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.');
     
-        /** product detail */ 
+        // User can see Product detail's attributes
         await page.locator('[data-test="item-4-title-link"]').click();
         await page.waitForSelector('#inventory_item_container')
         await expect(page.locator('[data-test="back-to-products"]')).toBeVisible()

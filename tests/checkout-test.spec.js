@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe("Test suite - Functionality Test", () =>{
     test.beforeEach(async ({ page }) => {
-        // User go to web and login
+        // go to web demo and login with valid credentials
         await page.goto('https://www.saucedemo.com/');
         await page.locator('[data-test="username"]').fill('standard_user');
         await page.locator('[data-test="password"]').fill('secret_sauce');
@@ -67,7 +67,7 @@ test.describe("Test suite - Data Validation Test", () =>{
         await page.locator('[data-test="shopping-cart-link"]').click();
     });
 
-    test.only('Verify data product are accurate in checkout process', async ({page}) => {
+    test('Verify data product are accurate in checkout process', async ({page}) => {
         /**
          * CART PAGE
          */

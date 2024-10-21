@@ -2,6 +2,7 @@ import {test, expect} from '@playwright/test'
 
 test.describe("Test suite - Functionality Test", () => {
     test.beforeEach(async ({ page }) => {
+        // go to web demo
         await page.goto('https://www.saucedemo.com/')
     });
 
@@ -54,7 +55,7 @@ test.describe("Test suite - Error Handling Test", () => {
         // User click login button without fill username field
         await page.locator('[data-test="login-button"]').click();
     
-        // Display "Username is required" message
+        // Display "Username is required" message then close error message
         await expect(page.locator('[data-test="error"]')).toContainText('Username is required');
         await page.locator('[data-test="error-button"]').click();
     })
@@ -67,7 +68,7 @@ test.describe("Test suite - Error Handling Test", () => {
         // User click login button without fill password field
         await page.locator('[data-test="login-button"]').click();
     
-        // Display "Password is required" message
+        // Display "Password is required" message then close error message
         await expect(page.locator('[data-test="error"]')).toContainText('Password is required');
         await page.locator('[data-test="error-button"]').click();
     })
@@ -84,7 +85,7 @@ test.describe("Test suite - Error Handling Test", () => {
         // User click login button with invalid and/or credentials
         await page.locator('[data-test="login-button"]').click();
     
-        // Display "Username and password do not match any user in this service" message
+        // Display "Username and password do not match any user in this service" message then close error message
         await expect(page.locator('[data-test="error"]')).toContainText('Username and password do not match any user in this service');
         await page.locator('[data-test="error-button"]').click();
     })

@@ -1,0 +1,115 @@
+---------- TS-01 ----------
+TC_LOG_01
+1. Go to web https://www.saucedemo.com/
+2. User can see login's attributes
+TC_LOG_02
+1. TC_LOG_01
+2. User click & fill username field with valid username
+3. User click & fill password field with valid password
+4. User click Login button
+5. User successfully navigates to inventory page (product listing)
+TC_LOG_03
+1. TC_LOG_01
+2. User click login button without fill username field
+3. User can see display "Username is required" message
+4. User close error message
+TC_LOG_04
+1. TC_LOG_01
+2. User click login button without fill password field
+3. User can see display "Password is required" message
+4. User close error message
+TC_LOG_05
+1. TC_LOG_01
+2. User click & fill username field with invalid username
+3. User click & fill password field with invalid password
+4. User click Login button
+5. User can see display "Username and password do not match any user in this service" message
+6. User close error message
+TC_LOG_06
+1. TC_LOG_02
+2. User click Menu Button
+3. User click Logout Button
+4. User successfully redirect back to login page
+
+---------- TS-02 ----------
+TC_PROD_01
+1. TC_LOG_02
+2. User can see Product listing's attributes
+3. User click title/img of one of item on the listing
+4. User can see Product detail's attributes
+TC_PROD_02
+1. TC_PROD_01
+TC_PROD_03
+pending
+
+---------- TS-03 ----------
+TC_CART_01
+1. TC_LOG_02
+2. User can see Cart's attributes
+TC_CART_02
+1. TC_LOG_02
+2. User click 'add to cart' button of one of item on listing
+3. User click Cart button
+4. User can see the added item
+TC_CART_03
+1. TC_CART_02
+2. User click 'remove' button of one of item in cart
+3. User can't see the added item anymore
+
+---------- TS-04 ----------
+TC_CO_01
+1. TC_Cart_02
+2. User click Checkout button
+3. User fill checkout information
+4. User click Continue button
+5. User can see Checkout Overview
+6. User click Finish button
+7. User successfully finish checkout process
+8. User can see 'Thank you for your order' message and go back to listing page.
+TC_CO_02
+1. TC_Cart_02
+2. User click Checkout button
+3. User fill checkout information
+4. User click Continue button
+5. User can see Checkout Overview
+6. User click Finish button
+7. User successfully finish checkout process
+8. User can see 'Thank you for your order' message and go back to listing page.
+TC_CO_03
+1. TC_CART_02
+2. User click Checkout button
+3. User click checkout button without fill first name field
+4. User can see display "First Name is required" message
+5. User close error message
+6. User click checkout button without fill last name field
+7. User can see display "Last Name is required" message
+8. User close error message
+9. User click checkout button without fill postal code field
+10. User can see display "Postal Code is required" message
+11. User close error message
+
+----------------------- TS-N-01 -----------------------
+TC_CART_04
+1. User go url https://www.saucedemo.com/cart.html
+2. User redirected to Login page
+3. User can see display "Can only access when logged in" message
+TC_CO_04
+1. User go url https://www.saucedemo.com/checkout-step-one.html
+2. User redirected to Login page
+3. User can see display "Can only access when logged in" message
+TC_CO_05
+1. User go url https://www.saucedemo.com/checkout-step-two.html
+2. User redirected to Login page
+3. User can see display "Can only access when logged in" message
+TC_CO_06
+1. User go url https://www.saucedemo.com/checkout-complete.html
+2. User redirected to Login page
+3. User can see display "Can only access when logged in" message
+TC_PROD_04
+1. User go url https://www.saucedemo.com/inventory.html
+2. User redirected to Login page
+3. User can see display "Can only access when logged in" message
+TC_PROD_05
+1. User go url https://www.saucedemo.com/inventory-item.html?
+2. User redirected to Login page
+3. User can see display "Can only access when logged in" message
