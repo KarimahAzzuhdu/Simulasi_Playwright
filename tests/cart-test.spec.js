@@ -7,6 +7,11 @@ test.describe("Test suite - Functionality Test", () => {
         await page.locator('[data-test="username"]').fill('standard_user');
         await page.locator('[data-test="password"]').fill('secret_sauce');
         await page.locator('[data-test="login-button"]').click();
+        await page.waitForURL('https://www.saucedemo.com/inventory.html');
+
+        //add product to cart
+        await page.locator('[data-test="add-to-cart-sauce-labs-backpack"]').click();
+        await page.locator('[data-test="add-to-cart-sauce-labs-bolt-t-shirt"]').click();
     });
 
     test('Verify Cart Page', async ({page}) => {
@@ -22,8 +27,6 @@ test.describe("Test suite - Functionality Test", () => {
     })
 
     test('Verify adding product to cart and product information are accurate',{tag: '@need_review'}, async ({page}) => {
-        await page.waitForURL('https://www.saucedemo.com/inventory.html')
-        
         /**
          * PRODUCT LISTING
          */
@@ -32,8 +35,8 @@ test.describe("Test suite - Functionality Test", () => {
         let listing_name = await first_prod.locator('.inventory_item_name').textContent()
         let listing_desc = await first_prod.locator('.inventory_item_desc').textContent()
         let listing_price = await first_prod.locator('.inventory_item_price').textContent()
-        //add to cart
-        await first_prod.getByRole('button', {name: 'Add to cart'}).click()
+        //add to cart (allready added in beforeEach)
+        // await first_prod.getByRole('button', {name: 'Add to cart'}).click()
 
         //goto cart
         await page.locator('[data-test="shopping-cart-link"]').click()
@@ -61,22 +64,25 @@ test.describe("Test suite - Functionality Test", () => {
     })
 
     test('Verify removing product from cart',{tag: '@need_review'}, async ({page}) => {
-        await page.waitForURL('https://www.saucedemo.com/inventory.html')
-        await page.pause()
-        
-        //add product to cart
-        await page.locator('[data-test="add-to-cart-sauce-labs-backpack"]').click();
-
         //goto cart
         await page.locator('[data-test="shopping-cart-link"]').click()
         await page.waitForSelector('.cart_list')
 
-        //remove product from cart
-        await page.getByRole('button', {name: 'Remove'}).click()
-
         /**
-         * Check removed product
+         * CART PRODUCT
          */
-        await expect(page.locator('.cart_item')).not.toBeVisible();
+        //first_cart information
+        let first_cart = await page.locator('.cart_item').first()
+        let fcart_name = await first_cart.locator('.inventory_item_name').textContent()
+        //remove first product from cart
+        await first_cart.getByRole('button', {name: 'Remove'}).click()
+        /**
+         * Check removed product (Updated cart)
+         */
+        //new first prod on cart
+        let new_first_cart = await page.locator('.cart_item').first()
+        let new_fcart_name = await new_first_cart.locator('.inventory_item_name').textContent()
+        //check
+        await expect.soft(fcart_name).not.toBe(new_fcart_name)
     })
 });
