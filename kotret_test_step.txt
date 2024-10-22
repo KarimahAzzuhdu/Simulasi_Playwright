@@ -40,7 +40,15 @@ TC_PROD_01
 TC_PROD_02
 1. TC_PROD_01
 TC_PROD_03
-pending
+1. TC_LOG_02
+2. User click sorting by name A-Z
+3. User can see Product listing's attributes with sorting by name A-Z
+4. User click sorting by name Z-A
+5. User can see Product listing's attributes with sorting by name Z-A
+6. User click sorting by price low-high
+7. User can see Product listing's attributes with sorting by price low-high
+8. User click sorting by price high-low
+9. User can see Product listing's attributes with sorting by price high-low
 
 ---------- TS-03 ----------
 TC_CART_01
