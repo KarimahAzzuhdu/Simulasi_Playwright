@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test.describe("Test suite - Functionality Test", () =>{
+test.describe("Functionality Test - Checkout", () =>{
     test.beforeEach(async ({ page }) => {
         // go to web demo and login with valid credentials
         await page.goto('https://www.saucedemo.com/');
@@ -17,7 +17,7 @@ test.describe("Test suite - Functionality Test", () =>{
         await page.locator('[data-test="checkout"]').click();
     });
 
-    test('Verify Checkout Page', async ({page}) => {
+    test('@smoke - Verify Checkout Page', async ({page}) => {
         await page.pause()
 
         // from cart goto checkout-step-one
@@ -53,7 +53,7 @@ test.describe("Test suite - Functionality Test", () =>{
     })
 })
 
-test.describe("Test suite - Data Validation Test", () =>{
+test.describe("Data Validation Test - Checkout", () =>{
     test.beforeEach(async ({ page }) => {
         // User go to web and login
         await page.goto('https://www.saucedemo.com/');
@@ -127,7 +127,7 @@ test.describe("Test suite - Data Validation Test", () =>{
     })
 })
 
-test.describe("Test suite - Error Handling Test", () => {
+test.describe("Error Handling Test - Checkout", () => {
     test.beforeEach(async ({ page }) => {
         await page.goto('https://www.saucedemo.com/');
         await page.locator('[data-test="username"]').fill('standard_user');

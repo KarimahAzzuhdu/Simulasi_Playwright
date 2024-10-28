@@ -34,15 +34,19 @@ module.exports = defineConfig({
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    // video: 'on-first-retry',
-    // launchOptions:{
-    //   slowMo: 1000
-    // },
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+    screenshot: 'only-on-failure',
+    // headless: false,
+    // ignoreHTTPSErrors: true,
+    // viewport: { width: 1280, height: 720 },
+    // video: 'on-first-retry',
+    // launchOptions:{
+    //   slowMo: 1000
+    // },
   },
 
   /* Configure projects for major browsers */

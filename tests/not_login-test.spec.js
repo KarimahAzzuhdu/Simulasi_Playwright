@@ -1,6 +1,6 @@
 import {test, expect} from '@playwright/test'
 
-test.describe("Test suite - Error Handling Test", () => {
+test.describe("Error Handling Test - Access Web when Not Login", () => {
 
     test('Verify error message for cart page without login', async ({page}) => {
         await page.goto('https://www.saucedemo.com/cart.html')

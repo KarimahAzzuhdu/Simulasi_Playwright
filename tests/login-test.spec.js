@@ -1,6 +1,6 @@
 import {test, expect} from '@playwright/test'
 
-test.describe("Test suite - Functionality Test", () => {
+test.describe("Functionality Test - Login", () => {
     test.beforeEach(async ({ page }) => {
         // go to web demo
         await page.goto('https://www.saucedemo.com/')
@@ -14,7 +14,7 @@ test.describe("Test suite - Functionality Test", () => {
         await expect(page.locator('[data-test="login-button"]').first()).toBeVisible();
     })
 
-    test('Verify login process with valid credentials', async ({page}) => {
+    test('@smoke - Verify login process with valid credentials', async ({page}) => {
         // User click & fill username field with valid username
         await page.locator('[data-test="username"]').click();
         await page.locator('[data-test="username"]').fill('standard_user');
@@ -31,7 +31,7 @@ test.describe("Test suite - Functionality Test", () => {
         await expect(page.locator('[data-test="logout-sidebar-link"]')).toBeVisible();
     })
 
-    test('Verify logout process', async ({page}) => {
+    test('@smoke - Verify logout process', async ({page}) => {
         // User Login
         await page.locator('[data-test="username"]').fill('standard_user');
         await page.locator('[data-test="password"]').fill('secret_sauce');
@@ -46,7 +46,7 @@ test.describe("Test suite - Functionality Test", () => {
     })
 });
 
-test.describe("Test suite - Error Handling Test", () => {
+test.describe("Error Handling Test - Login", () => {
     test.beforeEach(async ({ page }) => {
         await page.goto('https://www.saucedemo.com/')
     });

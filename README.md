@@ -1,7 +1,7 @@
 # **Simulasi QA - Automation Test**
-Tujuan utama dari proyek ini adalah melakukan simulasi pekerjaan Quality Assurance (QA) mulai dari perencanaan hingga pelaporan. Karena objek pengujian merupakan situs demo web publik dan dokumen seperti product requirement tidak tersedia, maka fokus simulasi pengujian hanya berdasarkan tipe-tipe pengujian umum seperti Fuctionality Testing, Data Validation Testing, dsb.
+Tujuan utama dari proyek ini adalah melakukan simulasi pekerjaan Quality Assurance (QA) mulai dari perencanaan hingga pelaporan. Karena objek pengujian merupakan situs demo web publik dan dokumen seperti product requirement tidak tersedia, maka fokus simulasi pengujian hanya berdasarkan tipe-tipe pengujian umum seperti Fuctionality, Data Validation, dsb.
 
-campur2 b.inggris dan b.indo karena bingung translate. 
+campur2 b.inggris dan b.indo karena malas translate. 
 
 ---
 
@@ -15,14 +15,14 @@ SIMUL-TEST-UI-01
 
 #### **3. Cakupan**
 Komponen pengujian yang akan dilakukan meliputi:
-- Functionality Testing : Komponen antarmuka situs web, termasuk login, cart, dan halaman product
-- Data Validation Testing : Validasi data terhadap detail product
-- Error Handling Testing : Verifikasi penanganan error untuk fungsi login
-- Compatibility Testing : Kompatibilitas situs web pada beragam browser dan perangkat
+- Functionality & Usability : Komponen antarmuka situs web, termasuk login, cart, dan halaman product
+- Data Validation : Validasi data terhadap detail product
+- Error Handling : Verifikasi penanganan error untuk fungsi login
+- Compatibility : Kompatibilitas situs web pada beragam browser dan perangkat
 
 Komponen pengujian yang tidak akan dilakukan meliputi:
-- Security Testing
-- Performance Testing, hanya dilakukan secara manual
+- Security
+- Performance
 
 #### **4. Tujuan**
 Tujuan dari *Test Plan*
@@ -30,10 +30,10 @@ Tujuan dari *Test Plan*
 - Mendeteksi masalah fungsional atau antarmuka pada tahap awal pengembangan
 - Memastikan situs web bekerja dengan baik pada berbagai browser dan perangkat.
 
-#### **5. *Test Items***
+#### **5. *Test Items (app's features)***
 Fitur pada situs web yang akan diuji :
 1. **Login** 
-2. **Product Listing and Details** 
+2. **Product (Listing and Details)** 
 3. **Cart** 
 4. **Checkout**
 
@@ -53,6 +53,8 @@ Metode/Pendekatan pengujian ini secara garis besar sebagai berikut:
 | Test Execution     	| Oct 11, 2024| Oct 16, 2024|
 | Test Report Generation | Oct 16, 2024| Oct 17, 2024|
 
+*note : I'll continue update this repo, so this schedule is actually not necessary nor relevant.*
+
 #### **8. *Test Environment & Test Data***
 ##### Test Environment :
    - **Browser:** Chrome dan Firefox
@@ -68,10 +70,21 @@ Metode/Pendekatan pengujian ini secara garis besar sebagai berikut:
 | error_user | secret_sauce|
 | visual_user | secret_sauce|
 
+*note : main test is only use standard_user, but for exploration I'll maybe use other username.*
+
 #### **9. *Test Scenarios & Test Cases***
-Perancangan Test Scenario dilakukan berdasarkan Test Item, kemudian diturunkan menjadi beberapa Test Case yang dirancang berdasarkan cakupan pengujian (Test Scope)
-#### Test Scenario : Memverifikasi alur login/logout dengan kredensial yang valid dan tidak valid di halaman Login.
-*Prerequisites condition*: User already registered
+Perancangan Test Scenario dilakukan berdasarkan Test Item, kemudian diturunkan menjadi beberapa Test Case yang dirancang berdasarkan cakupan pengujian (Test Scope).
+
+| Test Sc ID | Test Scenario |
+|------------|---------------|
+| TS-01	| User Login - Logout Web |
+| TS-02	| User see Product Information |
+| TS-03	| User put product in the cart |
+| TS-04	| User buy the products |
+| TS-N-01	| User try to access web without login |
+
+Test Case dikelompokan berdasarkan Fitur Web.
+#### LOGIN
 | Test ID  | Test Case Description                     	| Expected Outcome                                  	|
 |----------|----------------------------------------------|-------------------------------------------------------|
 | TC-LOG-01 | Verify Login Page | Login page has login attribute |
@@ -81,8 +94,7 @@ Perancangan Test Scenario dilakukan berdasarkan Test Item, kemudian diturunkan m
 | TC_LOG_05 | Verify error message for incorrect password   | Displays "Username and password do not match" message |
 | TC_LOG_06 | Verify logout process   | User logs out successfully and redirect back to login page |
 
-#### Test Scenario : Memeriksa detail produk, akurasi harga produk, dan konsistensi data produk di produk listing dan produk detail.
-*Prerequisites condition*: User already log in, ...
+#### PRODUCT
 | Test ID  | Test Case Description                      	| Expected Outcome                                  	|
 |----------|-----------------------------------------------|-------------------------------------------------------|
 | TC_PROD_01 | Verify Inventory Page and Inventory Item Page 	|  User can see product listing and product detail        	|
@@ -91,8 +103,7 @@ Perancangan Test Scenario dilakukan berdasarkan Test Item, kemudian diturunkan m
 | TC_PROD_04 | Verify error message for access inventory page without login	| Redirect to Login Page and displays error message 	|
 | TC_PROD_05 | Verify error message for access inventory-item page without login	| Redirect to Login Page and displays error message  |
 
-#### Test Scenario : Memverifikasi detail produk, akurasi harga produk, dan konsistensi data produk saat ditambahkan/dihapuskan dari Keranjang Belanja (Cart).
-*Prerequisites condition*: User already log in, ...
+#### CART
 | Test ID  | Test Case Description                      	| Expected Outcome                                  	|
 |----------|-----------------------------------------------|-------------------------------------------------------|
 | TC_CART_01  | Verify Cart Page | User can see cart page attributes  |
@@ -100,19 +111,22 @@ Perancangan Test Scenario dilakukan berdasarkan Test Item, kemudian diturunkan m
 | TC_CART_03  | Verify removing product from cart        	| Product removed from cart, and cart count updates 	|
 | TC_CART_04  | Verify error message for cart page without login        	| Redirect to Login Page and displays error message 	|
 
-#### Test Scenario : Memverifikasi proses checkout produk.
-*Prerequisites condition*: User already log in
+#### CHECKOUT
 | Test ID  | Test Case Description                      	| Expected Outcome                                  	|
 |----------|-----------------------------------------------|-------------------------------------------------------|
-| TC_CO_  |  Update later           	|     	|
-| TC_CO_  |             	|     	|
-| TC_CO_  |             	|     	|
+| TC_CO_01 | Verify Checkout Page | User can do Checkout Process successfully |
+| TC_CO_02 | Verify data product are accurate in checkout process | Checkout product information (espesially price) match and accurate on the cart and checkout page.    	|
+| TC_CO_03 | Verify error message for blank fields |  Displays "First Name is required", "Last Name is required", and "Postal Code is required" message   	|
+| TC_CO_04 | Verify error message for checkout-info page without login |  Redirect to Login Page and displays error message   	|
+| TC_CO_05 | Verify error message for checkout-overview inventory page without login |   Redirect to Login Page and displays error message  	|
+| TC_CO_06 | Verify error message for checkout-complete inventory page without login |  Redirect to Login Page and displays error message   	|
 
 #### **10. *Test Automation Tools***
 - **Framework:** Playwright
 - **Languages:** JavaScript (Node.js)
 - **Continuous Integration (CI) Tool:** GitHub Actions
 - **Test Report Generation:** ***To be decided later***
+
 catatan : Simulasi dengan tools lain disimpan direpo terpisah
 
 #### **11. *Test Criteria***
@@ -138,11 +152,16 @@ catatan : Simulasi dengan tools lain disimpan direpo terpisah
 | Perubahan pada antarmuka web secara berkala       	| Mengimplementasikan script test yang bersifat modular sehingga dapat beradaptasi akan perubahan antarmuka |
 
 #### **14. *Deliverables***
-- Sebelum Pengujian : Test Plan + Test Case (dalam README)
-- Selama Pengujian : Automated Test Scripts + Test Execution Reports (dalam repo ini)
-- Setelah Pengujian : Test Summary Report (*attachment later*)
+- Sebelum Pengujian : Test Plan + Test Case 
+- Selama Pengujian : Automated Test Scripts + Test Execution Reports
+- Setelah Pengujian : Test Summary Report
+
+Dokumen *deliverables* :
+- this Readme.md
+- [Spreadsheet](https://docs.google.com/spreadsheets/d/1WSkpfRSW-AHytkczOH_ZPBTiyYmuoSX0uBW6wTI3VE4/edit?usp=sharing)
 
 #### **15. Persetujuan**
+*In this project, it's all Me (except prod's owner ofc)!! but normally*:
 | Role            	| Nama        	| Tanda Tangan    	| Tanggal       	|
 |---------------------|-----------------|------------------|----------------|
 | Test Manager    	| Me            	| Signed             	|            	|

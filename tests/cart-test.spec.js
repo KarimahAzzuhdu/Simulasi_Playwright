@@ -1,6 +1,6 @@
 import {test, expect} from '@playwright/test'
 
-test.describe("Test suite - Functionality Test", () => {
+test.describe("Functionality Test - Cart", () => {
     test.beforeEach(async ({ page }) => {
         // go to web demo and login with valid credentials
         await page.goto('https://www.saucedemo.com/');
@@ -26,7 +26,7 @@ test.describe("Test suite - Functionality Test", () => {
         await expect.soft(page.locator('#checkout')).toContainText('Checkout');
     })
 
-    test('Verify adding product to cart and product information are accurate',{tag: '@need_review'}, async ({page}) => {
+    test('@smoke - Verify adding product to cart and product information are accurate',{tag: '@need_review'}, async ({page}) => {
         /**
          * PRODUCT LISTING
          */
@@ -63,7 +63,7 @@ test.describe("Test suite - Functionality Test", () => {
         await expect.soft(cart_price).toBe(listing_price)
     })
 
-    test('Verify removing product from cart',{tag: '@need_review'}, async ({page}) => {
+    test('@smoke - Verify removing product from cart',{tag: '@need_review'}, async ({page}) => {
         //goto cart
         await page.locator('[data-test="shopping-cart-link"]').click()
         await page.waitForSelector('.cart_list')

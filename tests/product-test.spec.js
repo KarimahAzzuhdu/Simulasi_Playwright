@@ -1,6 +1,6 @@
 import {test, expect} from '@playwright/test'
 
-test.describe("Test suite - Functionality Test", () => {
+test.describe("Functionality Test - Product", () => {
     test.beforeEach(async ({ page }) => {
         // go to web demo and login with valid credentials
         await page.goto('https://www.saucedemo.com/');
@@ -26,7 +26,7 @@ test.describe("Test suite - Functionality Test", () => {
         await expect(page.locator('[data-test="back-to-products"]')).toBeVisible()
     })
 
-    test('Verify sort product function by names and prices',{tag: '@akubingung'},  async ({page}) => {
+    test('Verify sort product function by names and prices',{tag: '@UI'},  async ({page}) => {
         await page.waitForURL('https://www.saucedemo.com/inventory.html')
         
         // User click sorting by name A-Z
@@ -75,7 +75,7 @@ test.describe("Test suite - Functionality Test", () => {
     })
 });
 
-test.describe("Test suite - Data Validation Test", () => {
+test.describe("Data Validation Test - Product", () => {
     test.beforeEach(async ({ page }) => {
         await page.goto('https://www.saucedemo.com/');
         await page.locator('[data-test="username"]').fill('standard_user');
