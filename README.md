@@ -39,8 +39,8 @@ Fitur pada situs web yang akan diuji :
 
 #### **6. *Test Strategy***
 Metode/Pendekatan pengujian ini secara garis besar sebagai berikut:
-- Automation Test menggunakan Playwright dan/atau Selenium
-- Bahasa yang digunakan adalah JavaScript dan/atau Python
+- Automation Test menggunakan Playwright (dan/atau Selenium di masa depan)
+- Bahasa yang digunakan adalah JavaScript
 - Seluruh Test Script disimpan di repository github, untuk kedepannya simulasi github action (integration to CI/CD pipelines)
 - Seluruh Test Script dieksekusi pada beberapa browser dan perangkat untuk pengujian kompatibilitas.
 
@@ -125,7 +125,7 @@ Test Case dikelompokan berdasarkan Fitur Web.
 - **Framework:** Playwright
 - **Languages:** JavaScript (Node.js)
 - **Continuous Integration (CI) Tool:** GitHub Actions
-- **Test Report Generation:** ***To be decided later***
+- **Test Report Generation:** Allure Report
 
 catatan : Simulasi dengan tools lain disimpan direpo terpisah
 
