@@ -8,10 +8,10 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "@playwright/test": "^1.48.1",
+    "@playwright/test": "^1.48.2",
     "@types/node": "^22.7.5",
     "allure-commandline": "^2.32.0",
-    "allure-playwright": "3.0.0-beta.3"
+    "allure-playwright": "^3.0.0-beta.3"
   },
   "dependencies": {
     "simulasi_playwright": "file:"
