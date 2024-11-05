@@ -37,7 +37,7 @@ jobs:
       # - run: npm test
       #   continue-on-error: true
       - name: Run Playwright tests
-        run: npx playwright test --project chromium
+        run: npx playwright test
 
 #Result (REPORT)
       - name: Setup Allure History
