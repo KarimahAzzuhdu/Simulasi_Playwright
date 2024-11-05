@@ -28,8 +28,15 @@ jobs:
       - name: Install npm
         run: npm install
 
-      - run: npm test
-        continue-on-error: true
+      - name: Install dependencies
+        run: npm ci
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      # - run: npm test
+      #   continue-on-error: true
+      - name: Run Playwright tests
+        run: npx playwright test --project chromium
 
       - name: Setup Allure History
         uses: actions/checkout@v4.2.0
