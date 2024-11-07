@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "npx playwright test --project=chromium"
+    "test": "npx playwright test --project=desktop",
+    "test-allure": "npx playwright test allure-tests/ --project=desktop",
+    "test:all": "npx playwright test --project dekstop mobile",
+    "test-allure:all": "npx playwright test allure-tests/ --project dekstop mobile"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +16,7 @@
     "@playwright/test": "^1.48.2",
     "@types/node": "^22.7.5",
     "allure-commandline": "^2.32.0",
+    "allure-js-commons": "^3.0.4",
     "allure-playwright": "^3.0.0-beta.3"
   },
   "dependencies": {

@@ -1,11 +1,11 @@
-import {test, expect} from '@playwright/test'
+import {test, expect} from '@playwright/test';
 
-test.describe("Functionality Test - Login", () => {
+test.describe("Functionality Test - Login", async () => {
     test.beforeEach(async ({ page }) => {
         // go to web demo
-        await page.goto('https://www.saucedemo.com/')
+        await page.goto('https://www.saucedemo.com/');
     });
-
+    
     test('Verify Login Page', async ({page}) => {
         //User can see login-container, username input field, password input field, and login button
         await expect(page.locator('[data-test="login-container"] div').filter({ hasText: 'Login' }).first()).toBeVisible();
@@ -26,8 +26,10 @@ test.describe("Functionality Test - Login", () => {
         // User click Login button
         await page.locator('[data-test="login-button"]').click();
     
-        // User successfully navigates to product page and can see Logout Button when open menu
+        // User successfully navigates to product page
         await page.getByRole('button', { name: 'Open Menu' }).click();
+        
+        //assertion: User can see Logout Button when open menu
         await expect(page.locator('[data-test="logout-sidebar-link"]')).toBeVisible();
     })
 
@@ -46,7 +48,8 @@ test.describe("Functionality Test - Login", () => {
     })
 });
 
-test.describe("Error Handling Test - Login", () => {
+test.describe("Error Handling Test - Login", async () => {
+
     test.beforeEach(async ({ page }) => {
         await page.goto('https://www.saucedemo.com/')
     });

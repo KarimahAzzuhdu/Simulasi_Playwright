@@ -1,5 +1,5 @@
-name: Allure Report
-run-name: ${{ github.actor }} is creating Allure report 🚀
+name: Playwright Tests & Allure Report
+run-name: ${{ github.actor }} is running the test and creating Allure report 🚀
 
 on:
   push:
@@ -11,10 +11,10 @@ permissions: write-all
 jobs:
   autotests:
     name: Run tests and generate Allure Report 
+    timeout-minutes: 60
     runs-on: ubuntu-latest
 
     steps:
-
 #SETUP
       - name: Clone repository
         uses: actions/checkout@v4.2.0
@@ -22,12 +22,12 @@ jobs:
       - name: Set up Node 20
         uses: actions/setup-node@v4.0.4
         with:
-          node-version: 20
+          # node-version: 20
+          node-version: lts/*
           cache: npm
 
       - name: Install npm
         run: npm install
-
       - name: Install dependencies
         run: npm ci
       - name: Install Playwright Browsers
@@ -37,7 +37,8 @@ jobs:
       # - run: npm test
       #   continue-on-error: true
       - name: Run Playwright tests
-        run: npx playwright test
+        # run: npx playwright test
+        run: npm run test-allure
 
 #Result (REPORT)
       - name: Setup Allure History
@@ -51,13 +52,15 @@ jobs:
       - name: Generate Allure Report
         uses: simple-elf/allure-report-action@v1.9
         if: always()
+        id: allure_report
         with:
           # allure_results: ./out/allure-results
           gh_pages: gh-pages
           allure_results: allure-results
+          allure_report: allure-report
           allure_history: allure-history
 
-      - name: Publish Allure Report
+      - name: Deploy Allure Report to Github Pages
         if: always()
         uses: peaceiris/actions-gh-pages@v3
         with:

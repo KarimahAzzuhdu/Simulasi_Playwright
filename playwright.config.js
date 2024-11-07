@@ -1,5 +1,7 @@
 // @ts-check
 const { defineConfig, devices } = require('@playwright/test');
+import { Status } from "allure-js-commons";
+import * as os from "node:os";
 
 /**
  * Read environment variables from file.
@@ -26,7 +28,7 @@ module.exports = defineConfig({
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
-  retries: process.env.CI ? 2 : 0,
+  retries: process.env.CI ? 2 : 1,
   // retries: 1,
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
@@ -36,6 +38,24 @@ module.exports = defineConfig({
     ['allure-playwright',
       {
         resultsDir: "allure-results",
+        // detail - If true (the default), Allure will automatically create steps 
+        detail: false,
+        // suiteTitle - If true (the default), implicitly add each test into a test suite named after its file name
+        suiteTitle: false,
+        categories: [
+          {
+            name: "foo",
+            messageRegex: "bar",
+            traceRegex: "baz",
+            matchedStatuses: [Status.FAILED, Status.BROKEN],
+          },
+        ],
+        environmentInfo: {
+          os_platform: os.platform(),
+          os_release: os.release(),
+          os_version: os.version(),
+          node_version: process.version,
+        },
       },
     ],
     ["json", {
@@ -88,6 +108,32 @@ module.exports = defineConfig({
     },
     {
       name: 'Mobile Safari',
+      use: { ...devices['iPhone 12'] },
+    },
+
+    /* Test desktop browser group*/
+    {
+      name: 'desktop',
+      use: { ...devices['Desktop Chrome'] },
+    },
+
+    {
+      name: 'desktop',
+      use: { ...devices['Desktop Firefox'] },
+    },
+
+    {
+      name: 'desktop',
+      use: { ...devices['Desktop Safari'] },
+    },
+
+    /* Test mobile browser group. */
+    {
+      name: 'mobile',
+      use: { ...devices['Pixel 5'] },
+    },
+    {
+      name: 'mobile',
       use: { ...devices['iPhone 12'] },
     },
 

@@ -159,6 +159,7 @@ catatan : Simulasi dengan tools lain disimpan direpo terpisah
 Dokumen *deliverables* :
 - this Readme.md
 - [Spreadsheet](https://docs.google.com/spreadsheets/d/1WSkpfRSW-AHytkczOH_ZPBTiyYmuoSX0uBW6wTI3VE4/edit?usp=sharing)
+- [Allure Report](http://karimahazzuhdu.my.id/Simulasi_Playwright)
 
 #### **15. Persetujuan**
 *In this project, it's all Me (except prod's owner ofc)!! but normally*:
