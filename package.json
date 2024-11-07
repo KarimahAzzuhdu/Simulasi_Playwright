@@ -5,8 +5,8 @@
   "scripts": {
     "test": "npx playwright test --project=desktop",
     "test-allure": "npx playwright test allure-tests/ --project=desktop",
-    "test:all": "npx playwright test --project dekstop mobile",
-    "test-allure:all": "npx playwright test allure-tests/ --project dekstop mobile"
+    "test:all": "npx playwright test --project desktop mobile",
+    "test-allure:all": "npx playwright test allure-tests/ --project desktop mobile"
   },
   "keywords": [],
   "author": "",
