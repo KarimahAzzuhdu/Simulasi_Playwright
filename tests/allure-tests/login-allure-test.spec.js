@@ -112,7 +112,6 @@ test.describe("Error Handling Test - Login", async () => {
         await allure.owner("Karimah Azzuhdu")
         await allure.tags("Web Interface", "Login", "Error Handling")
         await allure.severity("normal")
-        await allure.description("This test error message visibility when login with invalid credentials.")
 
         //suite structure
         await allure.parentSuite("Web Interface Test")
@@ -122,7 +121,6 @@ test.describe("Error Handling Test - Login", async () => {
         //behaviour structure
         await allure.epic("Web Interface");
         await allure.feature("Authentication");
-        await allure.story("Invalid User login to the web");
 
         await allure.step("go to web demo", async () => {
             await page.goto('https://www.saucedemo.com/');
@@ -130,6 +128,9 @@ test.describe("Error Handling Test - Login", async () => {
     });
 
     test('Verify error message for blank username field @allure.id:TC_LOG_03', async ({page}) => {
+        /** METADATA ALLURE REPORT*/
+        await allure.description("This test error message visibility when login with blank username field.")
+        await allure.story("Invalid User login to the web");
 
         await allure.step("User click login button with blank username field", async () => {
             await page.locator('[data-test="login-button"]').click();
@@ -146,6 +147,9 @@ test.describe("Error Handling Test - Login", async () => {
     })
     
     test('Verify error message for blank password field @allure.id:TC_LOG_04', async ({page}) => {
+        /** METADATA ALLURE REPORT*/
+        await allure.description("This test error message visibility when login with blank password field.")
+        await allure.story("Invalid User login to the web");
 
         await allure.step("User click & fill username field", async () => {
                 await page.locator('[data-test="username"]').click();
@@ -167,6 +171,10 @@ test.describe("Error Handling Test - Login", async () => {
     })
     
     test('Verify error message for incorrect password @allure.id:TC_LOG_05', async ({page}) => {
+        /** METADATA ALLURE REPORT*/
+        await allure.description("This test error message visibility when login with incorrect password.")
+        await allure.story("Invalid User login to the web");
+
         await allure.step("User Login with invalid credentials", async () => {
             await allure.step("User click & fill username field with invalid username", async () => {
                 await page.locator('[data-test="username"]').click();
@@ -209,12 +217,12 @@ test.describe("Error Handling Test - Access Web when Not Login", () => {
         //behaviour structure
         await allure.epic("Web Interface");
         await allure.feature("Authentication");
-        await allure.story("User access Web without Login");
     });
 
-    test('Verify error message for cart page without login', async ({page}) => {
+    test('Verify error message for cart page without login @allure.id:TC_LOGN_01', async ({page}) => {
         /** METADATA ALLURE REPORT*/
         await allure.description("This test error message visibility access cart page without Login.")
+        await allure.story("User access Web without Login");
 
         await allure.step("User go to cart page without Login", async () => {
             await page.goto('https://www.saucedemo.com/cart.html')
@@ -230,9 +238,10 @@ test.describe("Error Handling Test - Access Web when Not Login", () => {
         })
     })
 
-    test('Verify error message for access inventory page without login', async ({page}) => {
+    test('Verify error message for access inventory page without login @allure.id:TC_LOGN_05', async ({page}) => {
         /** METADATA ALLURE REPORT*/
         await allure.description("This test error message visibility access inventory page without Login.")
+        await allure.story("User access Web without Login");
 
         await allure.step("User go to inventory page without Login", async () => {
             await page.goto('https://www.saucedemo.com/inventory.html')
@@ -248,9 +257,10 @@ test.describe("Error Handling Test - Access Web when Not Login", () => {
         })
     })
     
-    test('Verify error message for access inventory-item page without login', async ({page}) => {
+    test('Verify error message for access inventory-item page without login @allure.id:TC_LOGN_06', async ({page}) => {
         /** METADATA ALLURE REPORT*/
         await allure.description("This test error message visibility access inventory-item page without Login.")
+        await allure.story("User access Web without Login");
 
         await allure.step("User go to inventory-item page without Login", async () => {
             await page.goto('https://www.saucedemo.com/inventory-item.html?id=4')
@@ -266,9 +276,10 @@ test.describe("Error Handling Test - Access Web when Not Login", () => {
         })
     })
 
-    test('Verify error message for checkout-information page without login', async ({page}) => {
+    test('Verify error message for checkout-information page without login @allure.id:TC_LOGN_02', async ({page}) => {
         /** METADATA ALLURE REPORT*/
         await allure.description("This test error message visibility access checkout-information page without Login.")
+        await allure.story("User access Web without Login");
 
         await allure.step("User go to checkout-information page without Login", async () => {
             await page.goto('https://www.saucedemo.com/checkout-step-one.html')
@@ -284,9 +295,10 @@ test.describe("Error Handling Test - Access Web when Not Login", () => {
         })
     })
 
-    test('Verify error message for checkout-overview inventory page without login', async ({page}) => {
+    test('Verify error message for checkout-overview inventory page without login @allure.id:TC_LOGN_03', async ({page}) => {
         /** METADATA ALLURE REPORT*/
         await allure.description("This test error message visibility access checkout-overview page without Login.")
+        await allure.story("User access Web without Login");
 
         await allure.step("User go to checkout-overview page without Login", async () => {
             await page.goto('https://www.saucedemo.com/checkout-step-two.html')
@@ -302,9 +314,10 @@ test.describe("Error Handling Test - Access Web when Not Login", () => {
         })
     })
 
-    test('Verify error message for checkout-complete inventory page without login', async ({page}) => {
+    test('Verify error message for checkout-complete inventory page without login @allure.id:TC_LOGN_04', async ({page}) => {
         /** METADATA ALLURE REPORT*/
         await allure.description("This test error message visibility access checkout-complete page without Login.")
+        await allure.story("User access Web without Login");
 
         await allure.step("User go to checkout-complete page without Login", async () => {
             await page.goto('https://www.saucedemo.com/checkout-complete.html')

@@ -38,9 +38,10 @@ test.describe("Functionality Test - Product", () => {
         })
     });
 
-    test('Verify Inventory Page and Inventory Item Page', async ({page}) => {
+    test('Verify Inventory Page and Inventory Item Page @allure.id:TC_PROD_01', async ({page}) => {
         /** METADATA ALLURE REPORT*/
         await allure.description("This test visibility inventory page and inventory item page.")
+        await allure.tag("smoke")
         await allure.story("Product pages visual")
 
         await allure.step("User saw Inventory Page", async () => {
@@ -64,7 +65,7 @@ test.describe("Functionality Test - Product", () => {
         })
     })
 
-    test('Verify sort product function by names and prices',  async ({page}) => {
+    test('Verify sort product function by names and prices @allure.id:TC_PROD_03',  async ({page}) => {
         /** METADATA ALLURE REPORT*/
         await allure.description("This test feature sorting product on inventory page.")
         await allure.story("User sorting & filtering product")
@@ -139,7 +140,6 @@ test.describe("Data Validation Test - Product", () => {
         await allure.owner("Karimah Azzuhdu")
         await allure.tags("Web Interface", "Product", "Data Validation")
         await allure.severity("critical")
-        await allure.description("This test information matched between product listing and product detail.")
 
         //suite structure
         await allure.parentSuite("Web Interface Test")
@@ -149,7 +149,6 @@ test.describe("Data Validation Test - Product", () => {
         //behaviour structure
         await allure.epic("Web Interface");
         await allure.feature("Product Listing & Detail");
-        await allure.story("Product Information");
 
         await allure.step("go to web demo", async () => {
             await page.goto('https://www.saucedemo.com/');
@@ -172,7 +171,10 @@ test.describe("Data Validation Test - Product", () => {
         })
     });
 
-    test('Verify product information match across pages', async ({page}) => {
+    test('Verify product information match across pages @allure.id:TC_PROD_02', async ({page}) => {
+        /** METADATA ALLURE REPORT*/
+        await allure.description("This test information matched between product listing and product detail.")
+        await allure.story("Product Information");
 
         await allure.step("User saw Inventory Page", async () => {
             await expect(page.locator('.inventory_container')).toBeVisible();
@@ -187,7 +189,6 @@ test.describe("Data Validation Test - Product", () => {
         let listing_img_src = await first_prod.getByRole("img").getAttribute('src')
 
         await allure.step("User click first product on Inventory Page", async () => {
-            // await page.locator('[data-test="item-'+ product_id +'-title-link"]').click();
             await first_prod.getByRole("img").click()
             // await first_prod.locator('.inventory_item_label > .inventory_item_name').click()
             await page.waitForSelector('#inventory_item_container')

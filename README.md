@@ -93,6 +93,12 @@ Test Case dikelompokan berdasarkan Fitur Web.
 | TC_LOG_04 | Verify error message for blank password field   | Displays "Password is required" message           	|
 | TC_LOG_05 | Verify error message for incorrect password   | Displays "Username and password do not match" message |
 | TC_LOG_06 | Verify logout process   | User logs out successfully and redirect back to login page |
+| TC_LOGN_01  | Verify error message for cart page without login        	| Redirect to Login Page and displays error message 	|
+| TC_LOGN_02 | Verify error message for checkout-info page without login |  Redirect to Login Page and displays error message   	|
+| TC_LOGN_03 | Verify error message for checkout-overview inventory page without login |   Redirect to Login Page and displays error message  	|
+| TC_LOGN_04 | Verify error message for checkout-complete inventory page without login |  Redirect to Login Page and displays error message   	|
+| TC_LOGN_05 | Verify error message for access inventory page without login	| Redirect to Login Page and displays error message 	|
+| TC_LOGN_06 | Verify error message for access inventory-item page without login	| Redirect to Login Page and displays error message  |
 
 #### PRODUCT
 | Test ID  | Test Case Description                      	| Expected Outcome                                  	|
@@ -100,16 +106,16 @@ Test Case dikelompokan berdasarkan Fitur Web.
 | TC_PROD_01 | Verify Inventory Page and Inventory Item Page 	|  User can see product listing and product detail        	|
 | TC_PROD_02 | Verify product information (name, description, price, image) match across pages   	|  Product information match on the listing and detail page         	|
 | TC_PROD_03 | Verify sort product function by names and prices  	| Product listing can get sorted by names and prices         	|
-| TC_PROD_04 | Verify error message for access inventory page without login	| Redirect to Login Page and displays error message 	|
-| TC_PROD_05 | Verify error message for access inventory-item page without login	| Redirect to Login Page and displays error message  |
 
 #### CART
 | Test ID  | Test Case Description                      	| Expected Outcome                                  	|
 |----------|-----------------------------------------------|-------------------------------------------------------|
 | TC_CART_01  | Verify Cart Page | User can see cart page attributes  |
-| TC_CART_02  | Verify adding product to cart and product information are accurate 	| Product appears in cart, cart count updates, and product information are accurate    	|
-| TC_CART_03  | Verify removing product from cart        	| Product removed from cart, and cart count updates 	|
-| TC_CART_04  | Verify error message for cart page without login        	| Redirect to Login Page and displays error message 	|
+| TC_CART_02  | Verify adding product to cart at inventory page	| Product appears in cart, cart count updates, and product information are accurate    	|
+| TC_CART_03  | Verify adding product to cart at inventory-item page 	| Product appears in cart, cart count updates, and product information are accurate    	|
+| TC_CART_04  | Verify removing product from cart at cart page | Product removed from cart, and cart count updates 	|
+| TC_CART_05  | Verify removing product from cart at inventory page | Product removed from cart, and cart count updates 	|
+| TC_CART_06  | Verify removing product from cart at inventory-item page | Product removed from cart, and cart count updates 	|
 
 #### CHECKOUT
 | Test ID  | Test Case Description                      	| Expected Outcome                                  	|
@@ -117,9 +123,6 @@ Test Case dikelompokan berdasarkan Fitur Web.
 | TC_CO_01 | Verify Checkout Page | User can do Checkout Process successfully |
 | TC_CO_02 | Verify data product are accurate in checkout process | Checkout product information (espesially price) match and accurate on the cart and checkout page.    	|
 | TC_CO_03 | Verify error message for blank fields |  Displays "First Name is required", "Last Name is required", and "Postal Code is required" message   	|
-| TC_CO_04 | Verify error message for checkout-info page without login |  Redirect to Login Page and displays error message   	|
-| TC_CO_05 | Verify error message for checkout-overview inventory page without login |   Redirect to Login Page and displays error message  	|
-| TC_CO_06 | Verify error message for checkout-complete inventory page without login |  Redirect to Login Page and displays error message   	|
 
 #### **10. *Test Automation Tools***
 - **Framework:** Playwright
@@ -136,7 +139,7 @@ catatan : Simulasi dengan tools lain disimpan direpo terpisah
   - Test Case telah dibuat dan direview.
 
 - **Exit Criteria:**
-  - Seluruh Test Case prioritas tinggi telah dieksekusi.
+  - Seluruh Test Case telah dieksekusi dan 'passed'.
   - Test Report telah dibuat dan direview.
 
 #### **12. Roles and Responsibilities**
@@ -159,7 +162,7 @@ catatan : Simulasi dengan tools lain disimpan direpo terpisah
 Dokumen *deliverables* :
 - this Readme.md
 - [Spreadsheet](https://docs.google.com/spreadsheets/d/1WSkpfRSW-AHytkczOH_ZPBTiyYmuoSX0uBW6wTI3VE4/edit?usp=sharing)
-- [Allure Report](http://karimahazzuhdu.my.id/Simulasi_Playwright)
+- [Allure Report](http://karimahazzuhdu.github.io/Simulasi_Playwright)
 
 #### **15. Persetujuan**
 *In this project, it's all Me (except prod's owner ofc)!! but normally*:

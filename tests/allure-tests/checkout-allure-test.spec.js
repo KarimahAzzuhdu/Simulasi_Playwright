@@ -57,9 +57,10 @@ test.describe("Functionality Test - Checkout", () =>{
         })
     });
 
-    test('Verify Checkout Page', async ({page}) => {
+    test('Verify Checkout Page @allure.id:TC_CO_01', async ({page}) => {
         /** METADATA ALLURE REPORT*/
         await allure.description("This test visibility checkout pages.")
+        await allure.tag("smoke")
         await allure.story("Checkout pages visual")
 
         await allure.step("User saw Checkout Information page", async () => {
@@ -119,7 +120,6 @@ test.describe("Data Validation Test - Checkout", () =>{
         await allure.owner("Karimah Azzuhdu")
         await allure.tags("Web Interface", "Checkout", "Data Validation")
         await allure.severity("critical")
-        await allure.description("This test product information matched between cart and checkout pages.")
 
         //suite structure
         await allure.parentSuite("Web Interface Test")
@@ -129,7 +129,6 @@ test.describe("Data Validation Test - Checkout", () =>{
         //behaviour structure
         await allure.epic("Web Interface");
         await allure.feature("Checkout");
-        await allure.story("Checkout Information");
 
         await allure.step("go to web demo", async () => {
             await page.goto('https://www.saucedemo.com/');
@@ -167,14 +166,16 @@ test.describe("Data Validation Test - Checkout", () =>{
         })
     });
 
-    test('Verify data product are accurate in checkout process', async ({page}) => {
+    test('Verify data product are accurate in checkout process @allure.id:TC_CO_02', async ({page}) => {
+        /** METADATA ALLURE REPORT*/
+        await allure.description("This test product information matched between cart and checkout pages.")
+        await allure.story("Checkout Information");
+
         /** products informations in CART */
         let first_cart = await page.locator('.cart_item').first()
-        let last_cart = await page.locator('.cart_item').last()
-        //NAME & Price First Item
         let cart_name_first = await first_cart.locator('.inventory_item_name').textContent()
         let cart_price_first = await first_cart.locator('.inventory_item_price').textContent()
-        //NAME & Price Last Item
+        let last_cart = await page.locator('.cart_item').last()
         let cart_name_last = await last_cart.locator('.inventory_item_name').textContent()
         let cart_price_last = await last_cart.locator('.inventory_item_price').textContent()
         
@@ -203,11 +204,9 @@ test.describe("Data Validation Test - Checkout", () =>{
         
         /** products informations in CHECKOUT */
         let first_prod = await page.locator('.cart_item').first()
-        let last_prod = await page.locator('.cart_item').last()
-        //NAME & Price First Item
         let checkout_name_first = await first_prod.locator('.inventory_item_name').textContent()
         let checkout_price_first = await first_prod.locator('.inventory_item_price').textContent()
-        //NAME & Price Last Item
+        let last_prod = await page.locator('.cart_item').last()
         let checkout_name_last = await last_prod.locator('.inventory_item_name').textContent()
         let checkout_price_last = await last_prod.locator('.inventory_item_price').textContent()
         //Summary
@@ -241,7 +240,6 @@ test.describe("Error Handling Test - Checkout", () => {
         await allure.owner("Karimah Azzuhdu")
         await allure.tags("Web Interface", "Checkout", "Error Handling")
         await allure.severity("normal")
-        await allure.description("This test error message visibility when fill invalid checkout information.")
 
         //suite structure
         await allure.parentSuite("Web Interface Test")
@@ -251,7 +249,6 @@ test.describe("Error Handling Test - Checkout", () => {
         //behaviour structure
         await allure.epic("Web Interface");
         await allure.feature("Checkout");
-        await allure.story("User fill invalid checkout information");
 
         await allure.step("go to web demo", async () => {
             await page.goto('https://www.saucedemo.com/');
@@ -293,7 +290,11 @@ test.describe("Error Handling Test - Checkout", () => {
         })
     });
     
-    test('Verify error message for blank fields', async ({page}) => {
+    test('Verify error message for blank fields @allure.id:TC_CO_03', async ({page}) => {
+        /** METADATA ALLURE REPORT*/
+        await allure.description("This test error message visibility when fill blank at checkout information fields.")
+        await allure.story("User fill invalid checkout information");
+
         await allure.step("User submit checkout information without fill first name field", async () => {
             await page.locator('[data-test="continue"]').click();
         })
